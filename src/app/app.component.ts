@@ -16,6 +16,8 @@ export class AppComponent {
       select: false,
       colorPelo: "rubio",
       tipoPelo: "liso",
+      gafas: false,
+      descartado: false,
       foto: "http://localhost:4200/assets/miguel.png"
     },
     {
@@ -26,6 +28,8 @@ export class AppComponent {
       select: false,
       colorPelo: "negro",
       tipoPelo: "ondulado",
+      gafas: false,
+      descartado: false,
       foto: "http://localhost:4200/assets/edson.jpg"
     },
     {
@@ -36,6 +40,8 @@ export class AppComponent {
       select: false,
       colorPelo: "castaño",
       tipoPelo: "ondulado",
+      gafas: true,
+      descartado: false,
       foto: "http://localhost:4200/assets/natalia.jpg"
     },
     {
@@ -46,6 +52,8 @@ export class AppComponent {
       select: false,
       colorPelo: "negro",
       tipoPelo: "crespo",
+      gafas: false,
+      descartado: false,
       foto: "http://localhost:4200/assets/cristian.jpg"
     },
     {
@@ -56,6 +64,8 @@ export class AppComponent {
       select: false,
       colorPelo: "castaño",
       tipoPelo: "liso",
+      gafas: false,
+      descartado: false,
       foto: "http://localhost:4200/assets/stiven.jpg"
     }
   ];
@@ -63,19 +73,19 @@ export class AppComponent {
   public personSelectMach: any;
   public hideSelect: Boolean;
   public preguntas: any = [
-    "¿Es hombre?",
-    "¿Es mujer?",
-    "¿Tiene anteojos?",
-    "¿Tiene pelo rubio?",
-    "¿Tiene pelo castaño?",
-    "¿Tiene pelo negro?",
-    "¿Tiene barba?",
-    "¿Tiene pelo crespo?",
-    "¿Tiene pelo lizo?",
-    "¿Tiene pelo ondulado?",
-    "¿Tiene ropa clara?",
-    "¿Tiene ropa oscura?"
-  ];
+    {pregunta: "¿Es hombre?", id: "sexoH"},
+    {pregunta: "¿Es mujer?", id: "sexoM"},
+    {pregunta: "¿Tiene anteojos?", id: "gafas"},
+    {pregunta: "¿Tiene pelo rubio?", id: "colorPeloR"},
+    {pregunta: "¿Tiene pelo castaño?", id: "colorPeloC"},
+    {pregunta: "¿Tiene pelo negro?", id: "colorPeloN"},
+    {pregunta: "¿Tiene barba?", id: "barba"},
+    {pregunta: "¿Tiene pelo crespo?", id: "tipoPeloC"},
+    {pregunta: "¿Tiene pelo lizo?", id: "tipoPeloL"},
+    {pregunta: "¿Tiene pelo ondulado?", id: "tipoPeloO"},
+    {pregunta: "¿Tiene ropa clara?", id: "ropaClara"},
+    {pregunta: "¿Tiene ropa oscura?", id: "ropaOscura"}
+  ]
 
   constructor() {
     this.hideSelect = true;
@@ -97,5 +107,25 @@ export class AppComponent {
 
   getRandomArbitrary(min: number, max: number) {
     return Math.round(Math.random() * (max - min) + min);
+  }
+
+  selectPregunta(question: any){
+    this.personSelectMach;
+    console.log(question.id);
+    console.log(this.personSelectUser);
+    if(question.id == "sexoH"){
+      this.personas.forEach((element: any) => {
+        if (!element.sexo) element.descartado = true;
+      });
+    }
+    let cont = 0;
+    this.personas.forEach((e: any) => {
+      if(e.descartado == false){
+        cont++;
+      }
+    });
+    if(cont <= 1 ){
+      console.log("Juego terminado")      
+    }
   }
 }
