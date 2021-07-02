@@ -8,3 +8,12 @@
     width: 100%;
     height: 250px;
 }
+.body1 {
+    background-color: rgb(202, 92, 92);
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev{
+    display:block;
+}

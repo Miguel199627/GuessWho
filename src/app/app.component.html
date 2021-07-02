@@ -11,15 +11,26 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div id="carouselExampleSlidesOnly" class="carousel slide text-center" data-bs-ride="carousel">
-      <div class="carousel-inner" *ngFor="let pregunta of preguntas">
-        <div class="carousel-item active">
-          {{ pregunta }}
-        </div>
+
+
+<div class="body1">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active text-center p-4"  >
+        <p>Selecciona una pregunta</p>
+      </div>   
+      <div class="carousel-item text-center p-4"  *ngFor="let pregunta of preguntas">
+           <p>{{ pregunta }}</p>
       </div>
-    </div>
   </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
 </div>
-
-
