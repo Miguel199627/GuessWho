@@ -1,13 +1,25 @@
-<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-dark mb-5">
   <a class="ml-2 navbar-brand text-light" href="#"> GuessWho </a>
 </nav>
-
-<div class="row justify-content-center">
-  <div class="card m-2" style="width: 18rem" *ngFor="let persona of personas">
-    <img src="{{ persona.foto }}" class="card-img-top" alt="persona" width="500" height="300"/>
-    <div class="card-body">
-      <h5 class="card-title">{{ persona.nombre }}</h5>
-      <a href="#" class="btn btn-primary">Listo</a>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card m-2" style="width: 18rem" *ngFor="let persona of personas" [class.bg-secondary]="persona.select">
+      <img src="{{ persona.foto }}" class="card-img-top cardImg" alt="persona"/>
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ persona.nombre }}</h5>
+        <a href="#" class="btn btn-primary" (click)="select(persona)" *ngIf="hideSelect">Select person</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="carouselExampleSlidesOnly" class="carousel slide text-center" data-bs-ride="carousel">
+      <div class="carousel-inner" *ngFor="let pregunta of preguntas">
+        <div class="carousel-item active">
+          {{ pregunta }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
